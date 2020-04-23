@@ -1,5 +1,6 @@
 #!/usr/bin/python
-# -*- coding: <utf8> -*
+"""
+"""
 
 
 # imported as __pc to prevent it from appearing in 'dir()'
@@ -9,7 +10,7 @@ import logging
 
 
 # 'dict' that stores all plugins
-# see 'decorateit.register()' for more details.
+# see 'util.register()' for more details.
 plugins = dict()
 
 
@@ -29,7 +30,7 @@ def timer(_func=None, *, times: int = 1):
 
         Usage example:
 
-            >>> from decorateit import timer
+            >>> from decorateit.util import timer
             >>>
             >>> @timer(times=5)
             ... def sqrt(n):
@@ -85,7 +86,7 @@ def count_calls(func):
 
         Usage example:
 
-            >>> from decorateit import count_calls
+            >>> from decorateit.util import count_calls
             >>>
             >>> @count_calls
             ... def fib(n):
@@ -121,7 +122,7 @@ def count_calls(func):
 
 def register(func):
     """
-    Decorator that registers and stores given function as plugin in 'decorateit.plugins'
+    Decorator that registers and stores given function as plugin in 'util.plugins'
     dictionary. Function name as a key and function itself as a value.
 
         Parameters:
@@ -133,7 +134,7 @@ def register(func):
 
         Usage example:
 
-            >>> from decorateit import register
+            >>> from decorateit.util import register
             >>>
             >>> @register
             ... def fib(n):
@@ -161,7 +162,7 @@ def register(func):
             3
             >>> insert_sort([5, 9, 2, 3, -4, 11])
             [-4, 2, 3, 5, 9, 11]
-            >>> print(decorateit.plugins)
+            >>> print(util.plugins)
             {'fib': <function fib at 0x0000024FE5020678>, 'insert_sort': <function insert_sort at 0x0000024FE505E708>}
     """
     plugins[func.__name__] = func
@@ -182,7 +183,7 @@ def memorise(func):
 
         Usage example:
 
-            >>> from decorateit import count_calls, memorise
+            >>> from decorateit.util import count_calls, memorise
             >>>
             >>> @memorise
             ... @count_calls
@@ -240,7 +241,7 @@ def debug(func):
 
         Usage example:
 
-            >>> from decorateit import debug
+            >>> from decorateit.util import debug
             >>>
             >>> @debug
             ... def fib(n):

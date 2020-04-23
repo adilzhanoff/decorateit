@@ -3,7 +3,7 @@
 * **decorateit** allows you to enhance your classes, their methods and functions with some powerful decorators
   * Documentation : TODO
   * Source code: [https://github.com/adilzhanoff/decorateit](https://github.com/adilzhanoff/decorateit)
-  * PyPI project: [https://pypi.org/project/decorateit/](https://pypi.org/project/decorateit/)
+  * Test PyPI project: [https://test.pypi.org/project/decorateit/](https://test.pypi.org/project/decorateit/)
   * Bug Reports & Issues: [https://github.com/adilzhanoff/decorateit/issues](https://github.com/adilzhanoff/decorateit/issues)
 
 ## Prerequisites
@@ -21,7 +21,7 @@ Get the package installed by running command below in your shell:
 Get it all ready to work in your program:
 
 ```python
-import decorateit
+from decorateit import util
 
 
 # your main function
