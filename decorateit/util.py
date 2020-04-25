@@ -14,6 +14,9 @@ import logging
 plugins = dict()
 
 
+# TODO add repeat and time decorators
+
+
 def timer(_func=None, *, times: int = 1):
     """
     Decorator that times how much it takes to run a function.
@@ -169,23 +172,23 @@ def register(func):
     return func
 
 
-def memorise(func):
+def optimise(func):
     """
-    Decorator that "memorises" the return value of the given function as a 'dict' value
-    and takes its arguments and keyword arguments as a key. Usualy used with recursive functions.
+    Decorator that optimises the given function by storing the results of its
+    calls. Usualy used with recursive functions.
 
         Parameters:
             func:
-                function to be used for "memorising"
+                function to be used for optimising
 
         Returns:
             wrapped return value of 'func'
 
         Usage example:
 
-            >>> from decorateit.util import count_calls, memorise
+            >>> from decorateit.util import count_calls, optimise
             >>>
-            >>> @memorise
+            >>> @optimise
             ... @count_calls
             ... def fib(n):
             ...     if n < 2:
@@ -219,11 +222,11 @@ def memorise(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
         key = args + tuple(kwargs.items())
-        if key not in func.memorised__:
-            func.memorised__[key] = func(*args, **kwargs)
-        return func.memorised__[key]
+        if key not in wrapper.optimised:
+            wrapper.optimised[key] = func(*args, **kwargs)
+        return wrapper.optimised[key]
 
-    func.memorised__ = {}
+    wrapper.optimised = {}
     return wrapper
 
 
