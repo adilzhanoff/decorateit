@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 
 __NAME: str = 'decorateit'
 
-__VERSION: str = '0.0.1b1'
+__VERSION: str = '0.0.1b2'
 
 __AUTHOR: str = 'Rasul Adilzhanov'
 
